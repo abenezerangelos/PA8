@@ -154,13 +154,13 @@ void maximum_occurrences(char* string, Occurrences* occurrences, int* integer, c
 
 
 }
-void max_consecutive_integers(int** signed_integers,int rows, int columns, int** pointer_to_pointer, int* pointer) {
+void max_consecutive_integers(int** signed_integers,int rows, int cols, int** pointer_to_pointer, int* pointer) {
 	
 	//printer that is all it does
 	printf("[");
 	for (int i = 0; i < rows; i++) {
 		printf("[");
-		for (int j = 0; j < columns; j++) {
+		for (int j = 0; j < cols; j++) {
 			printf("%d, ", signed_integers[i][j]);
 		}
 		if (i == rows - 1)printf("]");
@@ -168,6 +168,45 @@ void max_consecutive_integers(int** signed_integers,int rows, int columns, int**
 	}
 	printf("]\n");
 
+	int max_start = -1, max_len = 0;
+	int curr_start = -1, curr_len = 0;
+	int prev_val = -1;
 
+	// Check each element of the array
+	for (int i = 0; i < rows * cols; i++) {
+		int row = i / cols;
+		int col = i % cols;
+		int val = signed_integers[row][col];
+
+		// If this is the first element or the value matches the previous element
+		if (prev_val == -1 || val == prev_val) {
+			// If this is the first element of a new run, record its start position
+			if (curr_len == 0) {
+				curr_start = i;
+			}
+			curr_len++;
+		}
+		// Otherwise, this element starts a new run
+		else {
+			// If the current run is longer than the previous maximum, update the maximum
+			if (curr_len > max_len) {
+				max_start = curr_start;
+				max_len = curr_len;
+			}
+			curr_start = i;
+			curr_len = 1;
+		}
+
+		prev_val = val;
+	}
+
+	// Check the last run
+	if (curr_len > max_len) {
+		max_start = curr_start;
+		max_len = curr_len;
+	}
+
+	*pointer_to_pointer = &(signed_integers[max_start / cols][max_start % cols]);
+	*pointer = max_len;
 
 }

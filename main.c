@@ -5,21 +5,27 @@ int main(void) {
 	;
 	//should print hel
 	
-	printf("%s\n", my_str_n_cat(dest, src, 3));
+	printf("Str_n_cat:%s\n", my_str_n_cat(dest, src, 3));
+	printf("\n\n");
 	int array[5] = { 5, 6, 7, 9, 10 };
 	printf("Binary search index: %d\n",binary_search(array, 9));
+	printf("\n\n");
 	char* strings[] = { "water","earth", "air", "fire" };
 	int size = 4;
 	bubble_sort(strings, size);
-	printf("[%s", strings[0]);
+	printf("Bubble sort:[%s", strings[0]);
 	for (int i = 1; i < size; i++) {
 		printf(",%s", strings[i]);
 	}
 	printf("]\n");
+	printf("\n\n");
 	char* palindrome = "race       car";
 	//checks if the above string palindrome is a palindrome and then returns 1 if yes or returns 0 if it is not
+	printf("Palindrome:\n");
 	printf("Is \"%s\" a palindrome?: %d\n",palindrome,is_palindrome(palindrome, strlen(palindrome)));
+	printf("\n\n");
 	printf("Sum_primes: %d\n", sum_primes(7));
+	printf("\n\n");
 	char* string="Occurences";
 	int number_of_occur=0;
 	char character = '\0';
@@ -33,7 +39,8 @@ int main(void) {
 	
 	
 	printf("Maximum character: '%c', occurrences: %d\n", character, number_of_occur);
-
+	//initializing values of arrays
+	printf("\n\n");
 	int signed_integer[4][5] = { {-5,6,0,2,2},
 								{2,2,2,9,3}, 
 								{3,3,2,1,-8},
@@ -49,6 +56,13 @@ int main(void) {
 	int* arr ;
 	int address= 0;
 	max_consecutive_integers(pointer, row_size, column_size, &arr, &address);
+	printf("\n");
+	printf("Max consecutive sequence of length: %d starting at address: %p\n",address , arr);
+	printf("\n");
+	printf("Values: ");
+	for (int i = 0; i < address; i++) {
+		printf("%d ", arr[i]);
+	}
 	
 
 
