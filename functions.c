@@ -57,9 +57,8 @@ void remove_whitespace(char* string, int length, char* new_str, int* count) {
 	}
 	else {
 		int size = strlen(string) - length;
-		printf("Size: %d and length: %d\n", size, length);
+		
 		int ind = strlen(new_str);
-		printf("Index: %d\n", ind);
 		if (string[size] != ' ') {
 			new_str[ind] = string[size];
 			new_str[ind + 1] = '\0';
@@ -155,6 +154,20 @@ void maximum_occurrences(char* string, Occurrences* occurrences, int* integer, c
 
 
 }
-void max_consecutive_integers(int signed_integers[][1], int columns, void** pointer_to_pointer, void* pointer) {
+void max_consecutive_integers(int** signed_integers,int rows, int columns, int** pointer_to_pointer, int* pointer) {
+	
+	//printer that is all it does
+	printf("[");
+	for (int i = 0; i < rows; i++) {
+		printf("[");
+		for (int j = 0; j < columns; j++) {
+			printf("%d, ", signed_integers[i][j]);
+		}
+		if (i == rows - 1)printf("]");
+		else printf("],\n");
+	}
+	printf("]\n");
+
+
 
 }

@@ -4,6 +4,7 @@ int main(void) {
 	char dest[6] = { '\0' };
 	;
 	//should print hel
+	
 	printf("%s\n", my_str_n_cat(dest, src, 3));
 	int array[5] = { 5, 6, 7, 9, 10 };
 	printf("Binary search index: %d\n",binary_search(array, 9));
@@ -14,22 +15,16 @@ int main(void) {
 	for (int i = 1; i < size; i++) {
 		printf(",%s", strings[i]);
 	}
-	char* passer = "race car s";
-	char* new_str = (char*)malloc(strlen(passer) * sizeof(char));
-	*(new_str) = '\0';
-	int count=0;
-    remove_whitespace(passer,strlen(passer),new_str,&count);
-	printf("And the count is: %d\n", count);
-	printf("No space: %s\n", new_str);
+	printf("]\n");
 	char* palindrome = "race       car";
-	printf("Is it a palindrome?: %d\n",is_palindrome(palindrome, strlen(palindrome)));
+	//checks if the above string palindrome is a palindrome and then returns 1 if yes or returns 0 if it is not
+	printf("Is \"%s\" a palindrome?: %d\n",palindrome,is_palindrome(palindrome, strlen(palindrome)));
 	printf("Sum_primes: %d\n", sum_primes(7));
 	char* string="Occurences";
 	int number_of_occur=0;
 	char character = '\0';
 	//Same as: Occurrences occ []
 	Occurrences* occ = malloc(strlen(string)*sizeof(Occurrences));
-	printf("This is the size: %d\n", sizeof(occ));
 	for (int index = 0; index < strlen(string); index++) {
 		occ[index].num_occurrences = number_of_occur;
 		occ[index].character = string[index];
@@ -39,7 +34,23 @@ int main(void) {
 	
 	printf("Maximum character: '%c', occurrences: %d\n", character, number_of_occur);
 
+	int signed_integer[4][5] = { {-5,6,0,2,2},
+								{2,2,2,9,3}, 
+								{3,3,2,1,-8},
+								{7,-2,6,0,4} };
 	
+	int* pointer[4];
+	int column_size = sizeof(signed_integer[0]) / sizeof(int);
+	int row_size = (sizeof(signed_integer) / sizeof(int))/column_size;
+	for (int i = 0; i < row_size; i++) {
+		 pointer[i] = signed_integer[i];
+	}
+	printf("Size of row: %d and size of column:%d\n", row_size,column_size );
+	int* arr ;
+	int address= 0;
+	max_consecutive_integers(pointer, row_size, column_size, &arr, &address);
+	
+
 
 
 
